@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wallet App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Digital Wallet App</h1>    
+
+    <div id="landing-container">
+        <div class="auth-card">
+            <div class="toggle-bar" onclick="toggleAuth()">
+                <div id="toggle-indicator"></div>
+                <span>Login</span>
+                <span>Signup</span>
+                </div>
+
+            <div class="form-slider" id="form-slider">
+            <!-- LOGIN -->
+            <form class="auth-form" id="login-section">
+                <h2>Login</h2>
+                <input type="email" id="login-email" placeholder="Email" required />
+                <input type="password" id="login-password" placeholder="Password" required />
+                <button type="button" id="login-button" onclick="login()">Login</button>
+                <p id="login-message"></p>
+            </form>
+
+            <!-- SIGNUP -->
+            <form class="auth-form" id="signup-section">
+                <h2>Sign up</h2>
+                <input type="text" id="signup-firstname" placeholder="First name" required />
+                <input type="text" id="signup-lastname" placeholder="Last name" required />
+                <input type="email" id="signup-email" placeholder="Email" required />
+                <input type="password" id="signup-password" placeholder="Password" required />
+                <input type="password" id="signup-password2" placeholder="Confirm password" required />
+                <button type="button" onclick="signup()">Create account</button>
+                <p id="signup-message" class="status-message"></p>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container">
+    <div id="profile-bar" style="display:none;">
+        <div>
+            <h2 id="welcome-text"></h2>
+        </div>
+
+        <div id="pin-section">
+            <button id="pin-toggle-btn" onclick="togglePinForm()">SET/CHANGE PIN</button>
+
+            <div id="pin-form">
+                <input type="password" id="pin-1" placeholder="New PIN" />
+                <input type="password" id="pin-2" placeholder="Confirm PIN" />
+                <button onclick="submitPin()">Save PIN</button>
+                <p id="pin-message"></p>
+            </div>
+        </div>
+
+
+        <div id="profile-info">
+            <p id="profile-email"></p>
+            <p id="profile-wallet"></p>
+            <button id="logout-button" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div id="nav-bar">
+        <button onclick="showSection('balance', this)">Balance</button>
+        <button onclick="showSection('transfer', this)">Transfer</button>
+        <button onclick="showSection('search', this)">Search</button>
+        <button onclick="showSection('request', this)">Request</button>
+        <button onclick="showSection('requests', this)">Requests</button>
+        <button onclick="showSection('history', this)">History</button>
+        <button onclick="showSection('credit', this)">Credit</button>
+    </div>
+    
+
+    <div id="content-area">
+        <div id="balance-section" class="section card">
+            <h2>Wallet Balance</h2>
+            <button onclick="checkBalance()">Check Balance</button>
+            <p id="balance-display"></p>
+        </div>
+        <div id="search-section" class="section card" >
+            <h3>Search Users</h3>
+            <input id="search-query" placeholder="Email or Wallet ID">
+            <button onclick="searchUsers()">Search</button>
+            <ul id="search-results"></ul>
+        </div>
+
+    
+        <div id="credit-section" class="section card">
+            <h2>Credit Wallet</h2>
+            <input type="number" id="credit-amount" placeholder="Amount in rupees">
+            <button onclick="creditWallet()">Credit</button>
+            <p id="credit-message"></p>
+        </div>
+
+        <div id="transfer-section" class="section card">
+            <h2>Transfer Money</h2>
+            <input type="text" id="transfer-to" placeholder="Recipient Email / Wallet ID">
+            <input type="number" id="transfer-amount" placeholder="Amount in rupees">
+            <input type="password" id="transfer-pin" placeholder="Transaction PIN">
+            <button onclick="transferMoney()">Send</button>
+            <p id="transfer-message"></p>
+        </div>
+
+        <div id="request-section" class="section card" >
+            <h3>Request Money</h3>
+            <input id="request-to" placeholder="Email or Wallet ID">
+            <input id="request-amount" placeholder="Amount (₹)">
+            <input id="request-note" placeholder="Note (optional)">
+            <button onclick="createRequest()">Request</button>
+            <p id="request-msg"></p>
+
+        </div>
+
+        
+        <div id="requests-section" class="section card">
+            <h3>Incoming Requests</h3>
+            <ul id="incoming-requests"></ul>
+
+            <h3>Outgoing Requests</h3>
+            <ul id="outgoing-requests"></ul>
+        </div>
+
+
+        <div id="history-section" class="section card" >
+            <h2>Transaction History</h2>
+            <button onclick="loadTransactions()">Refresh</button>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    
+    
+
+    
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

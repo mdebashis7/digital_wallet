@@ -1,0 +1,360 @@
+/* =====================
+   DESIGN TOKENS
+===================== */
+:root {
+  --bg: #0b0f1a;
+  --surface: #121826;
+  --card: #161c2c;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.15);
+  --danger: #ef4444;
+}
+
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =====================
+   AUTH (LOGIN / REGISTER)
+===================== */
+.auth-card {
+  width: 360px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.toggle-bar {
+  display: flex;
+  position: relative;
+  background: var(--surface);
+}
+
+.toggle-bar span {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#toggle-indicator {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: var(--card);
+  border-radius: 14px;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.form-slider {
+  display: flex;
+  width: 200%;
+  transition: transform 0.4s ease;
+}
+
+.auth-form {
+  width: 50%;
+  padding: 24px;
+}
+
+.auth-form input {
+  width: 100%;
+  margin-bottom: 12px;
+}
+#landing-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+}
+.auth-form button {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+/* =====================
+   APP CONTAINER
+===================== */
+#app-container {
+  display: none;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* =====================
+   PROFILE BAR
+===================== */
+#profile-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#welcome-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#profile-wallet {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+#profile-bar button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#profile-bar button:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   NAV BAR (CENTERED)
+===================== */
+#nav-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+
+  display: flex;
+  justify-content: center;     /* 👈 CENTER BUTTONS */
+  gap: 12px;
+  overflow-x: auto;
+}
+
+#nav-bar button {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+#nav-bar button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#nav-bar button.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* =====================
+   CONTENT AREA
+===================== */
+#content-area {
+  padding: 28px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* =====================
+   CARDS
+===================== */
+.card {
+  width: 100%;
+  max-width: 720px;
+  background: var(--card);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+/* ======================
+   SECTION VISIBILITY
+====================== */
+
+.section {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section li {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+
+/* =====================
+   INPUTS & BUTTONS
+===================== */
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.card button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card button:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   PIN FORM
+===================== */
+#pin-form {
+  display: none;
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+#pin-form.active {
+  display: block;
+}
+#incoming-requests,
+#outgoing-requests {
+  margin-top: 10px;
+}
+
+#incoming-requests li,
+#outgoing-requests li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+/* REQUEST ITEMS */
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.request-info {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.request-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* BUTTONS */
+.request-actions button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.accept-btn {
+  background: #22c55e; /* green */
+  color: white;
+}
+
+.reject-btn {
+  background: #ef4444; /* red */
+  color: white;
+}
+
+.accept-btn:hover,
+.reject-btn:hover {
+  opacity: 0.9;
+}
